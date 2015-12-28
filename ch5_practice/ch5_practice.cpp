@@ -3,11 +3,11 @@
 
 // http://www.amazon.co.uk/Jumping-into-C-Alex-Allain/dp/0988927802
 // Chapter 5
-// practice question 1
+// practice question 2
 
 /*
-Write a program that prints out the entire lyrics to a full rendition of "99 Bottles of Beer". (In case you
-don't know this song, the words are here: http://en.wikipedia.org/wiki/99_Bottles_of_Beer )
+Write a menu program that lets the user select from a list of options, and if the input is not one of the
+options, reprint the list.
 */
 
 
@@ -45,33 +45,15 @@ using namespace std;
 
 int main()
 {
-    /*
-        https://en.wikipedia.org/wiki/99_Bottles_of_Beer
-        99 bottles of beer on the wall, 99 bottles of beer.
-        Take one down, pass it around, 98 bottles of beer on the wall...
+    int menuItem = 0;
 
-        No more bottles of beer on the wall, no more bottles of beer.
-        Go to the store and buy some more, 99 bottles of beer on the wall...
-    */
-
-    // nb: In console output in Visual Studio 2015, on Windows 10, output of this slightly exceeds buffer
-    //     with result that it SEEMS to start at 98 bottles!
-
-    for (int bottles = 99; bottles >= 0; bottles--)
+    do
     {
-        if (bottles)
-        {
-            cout << bottles << " bottles of beer on the wall, " << bottles << " bottles of beer." << endl;
-            cout << "Take on down, pass it around, " << bottles - 1 << " bottles of beer on the wall ... " << endl;
-        }
-        else
-        {
-            cout << "No more bottles of beer on the wall, no more bottles of beer." << endl;
-            cout << "Go to the store and buy some more, 99 bottles of beer on the wall ..." << endl;
-        }
+        cout << "Menu\n\n" << "1. sausages\n" << "2. bacon\n" << "3. eggs\n" << endl;
+        cout << "Please select 1, 2 or 3 ..." << endl;
 
-        cout << endl;
-    }
+        cin >> menuItem;
+    } while (!(menuItem == 1 || menuItem == 2 || menuItem == 3));
 
     MacroWaitReturn
 }
