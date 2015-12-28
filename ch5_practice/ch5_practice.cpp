@@ -6,10 +6,8 @@
 // practice question 1
 
 /*
-Expand the password checking program from earlier in this chapter and make it take multiple
-usernames, each with their own password, and ensure that the right username is used for the right
-password. Provide the ability to prompt users again if the first login attempt failed. Think about how easy
-(or hard) it is to do this for a lot of usernames and passwords.
+Write a program that prints out the entire lyrics to a full rendition of "99 Bottles of Beer". (In case you
+don't know this song, the words are here: http://en.wikipedia.org/wiki/99_Bottles_of_Beer )
 */
 
 
@@ -47,33 +45,32 @@ using namespace std;
 
 int main()
 {
-    // MODIFIED sample code to suit console out default window size / bounds (before wrap)
-    //          in Visual Studio 2015 Community on Windows 10, 1080p
+    /*
+        https://en.wikipedia.org/wiki/99_Bottles_of_Beer
+        99 bottles of beer on the wall, 99 bottles of beer.
+        Take one down, pass it around, 98 bottles of beer on the wall...
 
-    // The loop goes while i < 9, and i increases by one 
-    // every loop
+        No more bottles of beer on the wall, no more bottles of beer.
+        Go to the store and buy some more, 99 bottles of beer on the wall...
+    */
 
-    for (int i = 0; i < 9; i++)
+    // nb: In console output in Visual Studio 2015, on Windows 10, output of this slightly exceeds buffer
+    //     with result that it SEEMS to start at 98 bottles!
+
+    for (int bottles = 99; bottles >= 0; bottles--)
     {
-        // \t represents a ta character, which will
-        // format our output nicely
-
-        cout << '\t' << i;
-    }
-
-    cout << '\n';
-
-    // DAVE: notice ++i etc. ... 
-    // only makes difference if referencing i++ vs ++i e.g. when i changes (after statement executed)
-
-    for (int i = 0; i < 9; ++i)
-    {
-        cout << i;
-        for (int j = 0; j < 9; ++j)
+        if (bottles)
         {
-            cout << '\t' << i * j;
+            cout << bottles << " bottles of beer on the wall, " << bottles << " bottles of beer." << endl;
+            cout << "Take on down, pass it around, " << bottles - 1 << " bottles of beer on the wall ... " << endl;
         }
-        cout << '\n';
+        else
+        {
+            cout << "No more bottles of beer on the wall, no more bottles of beer." << endl;
+            cout << "Go to the store and buy some more, 99 bottles of beer on the wall ..." << endl;
+        }
+
+        cout << endl;
     }
 
     MacroWaitReturn
