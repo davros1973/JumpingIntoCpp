@@ -3,11 +3,11 @@
 
 // http://www.amazon.co.uk/Jumping-into-C-Alex-Allain/dp/0988927802
 // Chapter 5
-// practice question 3
+// practice question 4
 
 /*
-Write a program that computes a running sum of inputs from the user, terminating when the user gives
-an input value of 0.
+Write a password prompt that gives a user only a certain number of password entry attempts - so that
+the user cannot easily write a password cracker.
 */
 
 
@@ -45,19 +45,55 @@ using namespace std;
 
 int main()
 {
-    int operand = 0;
-    int runSum = 0;
+    string passwordSubmission = "";
 
-    // do while ... at least once even though condition false initially
-    //              will effectively crash if operand > upper bound of int
-    do
+    cout << "For loop implementation: " << endl;
+
+    for (int attemptsRemaining = 3; attemptsRemaining > 0; attemptsRemaining--)
     {
-        cout << "Please type in a number to sum, or 0 to terminate" << endl;
-        cin >> operand;
-        runSum += operand;
-        cout << "Running sum is now: " << runSum << endl;
+        cout << "Please enter your password to continue: " << endl;
+        getline(cin, passwordSubmission, '\n');
 
-    } while (operand);
+        if (passwordSubmission == "blahblah")
+        {
+            cout << "Well done!  You may proceed" << endl;
+            break;
+        }
+        else if ( attemptsRemaining -1 > 0 )
+        {
+            cout << "Please try again ... attempts remaining = " << attemptsRemaining - 1 << endl;
+        }
+        else
+        {
+            cout << "No more attempts remaaining. You cannot proceed. Password incorrect" << endl;
+        }
+    }
+
+    cout << "While loop implementation: " << endl;
+
+    // nb: attemptsRemaining declared before was local to the block with the For
+    int attemptsRemaining = 3;
+
+    while (attemptsRemaining > 0)
+    {
+        cout << "Please enter your password to continue: " << endl;
+        getline(cin, passwordSubmission, '\n');
+
+        if (passwordSubmission == "blahblah")
+        {
+            cout << "Well done! You may proceed" << endl;
+            break;
+        }
+        else
+        {
+            attemptsRemaining--;
+            cout << "Password incorrect. " << attemptsRemaining << " attempts remaining." << endl;
+        }
+        if (!attemptsRemaining)
+        {
+            cout << "You cannot proceed.  Bye." << endl;
+        }
+    }
 
     MacroWaitReturn
 }
