@@ -3,11 +3,11 @@
 
 // http://www.amazon.co.uk/Jumping-into-C-Alex-Allain/dp/0988927802
 // Chapter 4
-// practice question 2
+// practice question 3
 
 /*
-Implement a simple "password" system that takes a password in the form of a number. Make it so that 
-either of two numbers is valid, but use only one if statement to do the check.
+Write a small calculator that takes as input one of the four arithmetic operations,
+the two arguments to those operations, and then prints out the result
 */
 
 
@@ -16,7 +16,7 @@ either of two numbers is valid, but use only one if statement to do the check.
 // ... to quickly relearn (earlier incarnation of) C++ with firmer foundations ...
 // to help me with Arduino ...
 // and Windows Universal apps (C++/Cx)
-// (Originally learned C++ in the 90's).  David Baylis  dave@xarta.co.uk
+// (Originally learned C++ in the 90's).  David Bayliss  dave@xarta.co.uk
 
 #include "stdafx.h"
 #include <iostream>
@@ -44,22 +44,53 @@ using namespace std;
 
 int main()
 {
-    int acceptPass1 = 45;
-    int acceptPass2 = 1148;
-    int submitPass = 0;
+    double operandA = 0;
+    double operandB = 0;
+    double answer = 0;
+    string myOperator = "+";
 
-    cout << "Please enter password: " << endl;
-    cin >> submitPass;
+    // cheating ... using a loop earlier than in book
 
-    if (submitPass == acceptPass1 || submitPass == acceptPass2)
+    do
     {
-        cout << "Password is valid" << endl;
+        cout << "Please enter operator, x, /, +, - (times, divide by, plus, minus): " << endl;
+        getline(cin, myOperator, '\n');
+
+    } while (!(myOperator == "x" || myOperator == "/" || myOperator == "+" || myOperator == "-"));
+
+    cout << "Please enter first operand" << endl;
+    cin >> operandA; // not type safe
+
+    cout << "PLease enter second operand" << endl;
+    cin >> operandB; // not type safe
+
+    if (!(operandB == 0 && myOperator == "/"))
+    {
+        
+        if (myOperator == "+")
+        {
+            answer = operandA + operandB;
+        }
+        else if (myOperator == "-")
+        {
+            answer = operandA - operandB;
+
+        }
+        else if (myOperator == "x")
+        {
+            answer = operandA * operandB;
+        }
+        else
+        {
+            answer = operandA / operandB;
+        }
+
+        cout << operandA << " " << myOperator << " " << operandB << " = " << answer << endl;
     }
     else
     {
-        cout << "Invalid password";
+        cout << operandA << " " << myOperator << " " << operandB << " = ERROR: divide by zero" << endl;
     }
-
    
     MacroWaitReturn
 }
