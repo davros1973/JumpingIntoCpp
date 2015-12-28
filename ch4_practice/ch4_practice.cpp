@@ -27,6 +27,7 @@ password. Provide the ability to prompt users again if the first login attempt f
 // __cplusplus is defined in Visual Studio 2015
 // if in this environment, wait for a keypress before returning, closing the command window
 // cin.ignore(); flush the buffer for any /n in stream etc.!
+//               ... if no cin before then have to press a key twice to exit ... no prob. for practice tests
 #define MacroWaitReturn return 0;
 #ifdef __cplusplus
 #if __cplusplus == 199711
@@ -46,6 +47,10 @@ using namespace std;
 
 int main()
 {
+    // tedious ... yeah yeah
+    // (before we get to structures and arrays etc. etc. in book)
+    // (or even loops)
+
     string username;
     string password;
 
@@ -55,15 +60,36 @@ int main()
     cout << "Enter your password: " << "\n";
     getline(cin, password, '\n');
 
-    if (username == "root" && password == "xyzzy")
+    // && takes precedence over || remember
+    if ( username == "root" && password == "xyzzy" ||
+         username == "dave" && password == "12345" ||
+         username == "pete" && password == "54321")
     {
         cout << "Access allowed" << "\n";
     }
     else
     {
-        cout << "Bad username or password. Denied access!" << "\n";
-        // early exit
-        MacroWaitReturn
+        // do again without loop or function call etc. etc.
+        cout << "Bad username or password. Denied access! Second attempt:" << "\n";
+        cout << "Enter your username: " << "\n";
+        getline(cin, username, '\n');
+
+        cout << "Enter your password: " << "\n";
+        getline(cin, password, '\n');
+
+        // && takes precedence over || remember
+        if (username == "root" && password == "xyzzy" ||
+            username == "dave" && password == "12345" ||
+            username == "pete" && password == "54321")
+        {
+            cout << "Access allowed" << "\n";
+        }
+        else
+        {
+            cout << "Bad username or password. Denied access!" << "\n";
+            // early exit
+            MacroWaitReturn
+        }
     }
     // remainder of programme
     MacroWaitReturn
