@@ -3,7 +3,12 @@
 
 // http://www.amazon.co.uk/Jumping-into-C-Alex-Allain/dp/0988927802
 // Chapter 4
-// practice question 1
+// practice question 2
+
+/*
+Implement a simple "password" system that takes a password in the form of a number. Make it so that 
+either of two numbers is valid, but use only one if statement to do the check.
+*/
 
 
 // Using this book, primarily in Visual Studio 2015 community on Windows 10,
@@ -39,27 +44,22 @@ using namespace std;
 
 int main()
 {
-    int ageUser1 = 0;
-    int ageUser2 = 0;
+    int acceptPass1 = 45;
+    int acceptPass2 = 1148;
+    int submitPass = 0;
 
-    cout << "User1 - please enter your age: " << endl;
-    cin >> ageUser1;
+    cout << "Please enter password: " << endl;
+    cin >> submitPass;
 
-    cout << "User2 - please enter your age: " << endl;
-    cin >> ageUser2;
-
-    if ( !(ageUser1 > 100 || ageUser2 > 100) && ageUser1 > ageUser2)
+    if (submitPass == acceptPass1 || submitPass == acceptPass2)
     {
-        cout << "User1 is older than User2" << endl;
-    }
-    else if (!(ageUser1 > 100 || ageUser2 > 100) && ageUser2 > ageUser1)
-    {
-        cout << "User2 is older than User1" << endl;
+        cout << "Password is valid" << endl;
     }
     else
     {
-        cout << "A user is older than 100 years!" << endl;
+        cout << "Invalid password";
     }
+
    
     MacroWaitReturn
 }
