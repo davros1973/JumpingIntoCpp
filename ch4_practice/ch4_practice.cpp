@@ -3,11 +3,13 @@
 
 // http://www.amazon.co.uk/Jumping-into-C-Alex-Allain/dp/0988927802
 // Chapter 4
-// practice question 3
+// practice question 4
 
 /*
-Write a small calculator that takes as input one of the four arithmetic operations,
-the two arguments to those operations, and then prints out the result
+Expand the password checking program from earlier in this chapter and make it take multiple
+usernames, each with their own password, and ensure that the right username is used for the right
+password. Provide the ability to prompt users again if the first login attempt failed. Think about how easy
+(or hard) it is to do this for a lot of usernames and passwords.
 */
 
 
@@ -44,53 +46,25 @@ using namespace std;
 
 int main()
 {
-    double operandA = 0;
-    double operandB = 0;
-    double answer = 0;
-    string myOperator = "+";
+    string username;
+    string password;
 
-    // cheating ... using a loop earlier than in book
+    cout << "Enter your username: " << "\n";
+    getline(cin, username, '\n');
 
-    do
+    cout << "Enter your password: " << "\n";
+    getline(cin, password, '\n');
+
+    if (username == "root" && password == "xyzzy")
     {
-        cout << "Please enter operator, x, /, +, - (times, divide by, plus, minus): " << endl;
-        getline(cin, myOperator, '\n');
-
-    } while (!(myOperator == "x" || myOperator == "/" || myOperator == "+" || myOperator == "-"));
-
-    cout << "Please enter first operand" << endl;
-    cin >> operandA; // not type safe
-
-    cout << "PLease enter second operand" << endl;
-    cin >> operandB; // not type safe
-
-    if (!(operandB == 0 && myOperator == "/"))
-    {
-        
-        if (myOperator == "+")
-        {
-            answer = operandA + operandB;
-        }
-        else if (myOperator == "-")
-        {
-            answer = operandA - operandB;
-
-        }
-        else if (myOperator == "x")
-        {
-            answer = operandA * operandB;
-        }
-        else
-        {
-            answer = operandA / operandB;
-        }
-
-        cout << operandA << " " << myOperator << " " << operandB << " = " << answer << endl;
+        cout << "Access allowed" << "\n";
     }
     else
     {
-        cout << operandA << " " << myOperator << " " << operandB << " = ERROR: divide by zero" << endl;
+        cout << "Bad username or password. Denied access!" << "\n";
+        // early exit
+        MacroWaitReturn
     }
-   
+    // remainder of programme
     MacroWaitReturn
 }
