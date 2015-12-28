@@ -3,11 +3,10 @@
 
 // http://www.amazon.co.uk/Jumping-into-C-Alex-Allain/dp/0988927802
 // Chapter 5
-// practice question 4
+// practice question 6
 
 /*
-Write a password prompt that gives a user only a certain number of password entry attempts - so that
-the user cannot easily write a password cracker.
+Write a program that displays the first 20 square numbers.
 */
 
 
@@ -45,54 +44,13 @@ using namespace std;
 
 int main()
 {
-    string passwordSubmission = "";
+    // assuming just means 1 x 1, 2 x 2 etc. ... with 20 results ???
+    // seems a bit simple for this stage???
+    // not sure if "square number" means something different in which case doing this wrong
 
-    cout << "For loop implementation: " << endl;
-
-    for (int attemptsRemaining = 3; attemptsRemaining > 0; attemptsRemaining--)
+    for (int numToSquare = 1; numToSquare <= 20; numToSquare++)
     {
-        cout << "Please enter your password to continue: " << endl;
-        getline(cin, passwordSubmission, '\n');
-
-        if (passwordSubmission == "blahblah")
-        {
-            cout << "Well done!  You may proceed" << endl;
-            break;
-        }
-        else if ( attemptsRemaining -1 > 0 )
-        {
-            cout << "Please try again ... attempts remaining = " << attemptsRemaining - 1 << endl;
-        }
-        else
-        {
-            cout << "No more attempts remaaining. You cannot proceed. Password incorrect" << endl;
-        }
-    }
-
-    cout << "While loop implementation: " << endl;
-
-    // nb: attemptsRemaining declared before was local to the block with the For
-    int attemptsRemaining = 3;
-
-    while (attemptsRemaining > 0)
-    {
-        cout << "Please enter your password to continue: " << endl;
-        getline(cin, passwordSubmission, '\n');
-
-        if (passwordSubmission == "blahblah")
-        {
-            cout << "Well done! You may proceed" << endl;
-            break;
-        }
-        else
-        {
-            attemptsRemaining--;
-            cout << "Password incorrect. " << attemptsRemaining << " attempts remaining." << endl;
-        }
-        if (!attemptsRemaining)
-        {
-            cout << "You cannot proceed.  Bye." << endl;
-        }
+        cout << numToSquare << "\tsquared = " << numToSquare * numToSquare << endl;
     }
 
     MacroWaitReturn
