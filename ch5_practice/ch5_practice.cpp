@@ -3,11 +3,11 @@
 
 // http://www.amazon.co.uk/Jumping-into-C-Alex-Allain/dp/0988927802
 // Chapter 5
-// practice question 2
+// practice question 3
 
 /*
-Write a menu program that lets the user select from a list of options, and if the input is not one of the
-options, reprint the list.
+Write a program that computes a running sum of inputs from the user, terminating when the user gives
+an input value of 0.
 */
 
 
@@ -45,15 +45,19 @@ using namespace std;
 
 int main()
 {
-    int menuItem = 0;
+    int operand = 0;
+    int runSum = 0;
 
+    // do while ... at least once even though condition false initially
+    //              will effectively crash if operand > upper bound of int
     do
     {
-        cout << "Menu\n\n" << "1. sausages\n" << "2. bacon\n" << "3. eggs\n" << endl;
-        cout << "Please select 1, 2 or 3 ..." << endl;
+        cout << "Please type in a number to sum, or 0 to terminate" << endl;
+        cin >> operand;
+        runSum += operand;
+        cout << "Running sum is now: " << runSum << endl;
 
-        cin >> menuItem;
-    } while (!(menuItem == 1 || menuItem == 2 || menuItem == 3));
+    } while (operand);
 
     MacroWaitReturn
 }
