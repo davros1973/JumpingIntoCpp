@@ -47,27 +47,34 @@ using namespace std;
 
 int main()
 {
-    // The loop goes while i < 10, and i increases by one 
+    // MODIFIED sample code to suit console out default window size / bounds (before wrap)
+    //          in Visual Studio 2015 Community on Windows 10, 1080p
+
+    // The loop goes while i < 9, and i increases by one 
     // every loop
 
-    for (int i = 0; i < 10; i++)
+    for (int i = 0; i < 9; i++)
     {
-        // keep in mind that the loop condition checks
-        // the conditional statement before it loops 
-        // again.  Consequently, when i equals 10 the
-        // loop breaks. i is updated before the 
-        // condition is checked
+        // \t represents a ta character, which will
+        // format our output nicely
 
-        cout << i << " squared is " << i * i << endl;
+        cout << '\t' << i;
     }
 
-    /*
-        1. Initialization step          i = 0
-        2. Condition checked.           i < 10 so body run
-        3. Update step                  i++
-        4. Condition checked.           i < 10 (true = loop / body run)  (false = come out of loop) 
-        5. ... if false                 body run ... goto step 3
-    */
+    cout << '\n';
+
+    // DAVE: notice ++i etc. ... 
+    // only makes difference if referencing i++ vs ++i e.g. when i changes (after statement executed)
+
+    for (int i = 0; i < 9; ++i)
+    {
+        cout << i;
+        for (int j = 0; j < 9; ++j)
+        {
+            cout << '\t' << i * j;
+        }
+        cout << '\n';
+    }
 
     MacroWaitReturn
 }
