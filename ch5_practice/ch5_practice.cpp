@@ -120,7 +120,7 @@ int main()
 
     } while (answer);
     
-    if (answercount1 == answercount2 == answercount3)
+    if (answercount1 == answercount2 && answercount2 == answercount3)
     {
         if (answercount1 == 0)
         {
@@ -128,11 +128,17 @@ int main()
             bar2 = 0;
             bar3 = 0;
         }
-        else
+        else if (answercount1 > bargraphMax)
         {
             bar1 = bargraphMax;
             bar2 = bargraphMax;
             bar3 = bargraphMax;
+        }
+        else
+        {
+            bar1 = answercount1;
+            bar2 = answercount2;
+            bar3 = answercount3;
         }
     }
     else
@@ -153,9 +159,19 @@ int main()
             cout << "debug: answercount1 is biggest" << endl;
             answerbiggest = answercount1;
 
-            scale1 = bargraphMax;
-            scale2 = answercount2 / (double)answercount1 * bargraphMax;
-            scale3 = answercount3 / (double)answercount1 * bargraphMax;
+            if (answerbiggest > bargraphMax)
+            {
+                scale1 = bargraphMax;
+                scale2 = answercount2 / (double)answercount1 * bargraphMax;
+                scale3 = answercount3 / (double)answercount1 * bargraphMax;
+            }
+            else
+            {
+                scale1 = answercount1;
+                scale2 = answercount2;
+                scale3 = answercount3;
+            }
+            
         }
         else if (  answercount2 >= answercount1 && answercount1 >= answercount3  ||
                    answercount2 >= answercount3 && answercount3 >= answercount1  )
@@ -163,9 +179,19 @@ int main()
             cout << "debug: answercount2 is biggest" << endl;
             answerbiggest = answercount2;
 
-            scale2 = bargraphMax;
-            scale1 = answercount1 / (double)answercount2 * bargraphMax;
-            scale3 = answercount3 / (double)answercount2 * bargraphMax;
+            if (answerbiggest > bargraphMax)
+            {
+                scale2 = bargraphMax;
+                scale1 = answercount1 / (double)answercount2 * bargraphMax;
+                scale3 = answercount3 / (double)answercount2 * bargraphMax;
+            }
+            else
+            {
+                scale1 = answercount1;
+                scale2 = answercount2;
+                scale3 = answercount3;
+            }
+            
 
         }
         else
@@ -173,9 +199,20 @@ int main()
             cout << "debug: answercount3 is biggest" << endl;
             answerbiggest = answercount3;
 
-            scale3 = bargraphMax;
-            scale1 = answercount1 / (double)answercount3 * bargraphMax;
-            scale2 = answercount2 / (double)answercount3 * bargraphMax;
+            if (answerbiggest > bargraphMax)
+            {
+                scale3 = bargraphMax;
+                scale1 = answercount1 / (double)answercount3 * bargraphMax;
+                scale2 = answercount2 / (double)answercount3 * bargraphMax;
+            }
+            else
+            {
+                scale1 = answercount1;
+                scale2 = answercount2;
+                scale3 = answercount3;
+
+            }
+            
         }
 
         bar1 = scale1; // implict cast to int
@@ -204,8 +241,8 @@ int main()
             if (x < 5 || x > 5 && x < 11 || x > 11 && x < 17)
             {
                 if ( x < 5  && bar1 > y ||
-                     x < 11 && bar2 > y ||
-                     x < 17 && bar3 > y)
+                     x > 5  && x < 11   && bar2 > y ||
+                     x > 11 && x < 17   && bar3 > y)
                 {
                     cout << "@";
                 }
